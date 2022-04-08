@@ -6,6 +6,8 @@ import {
 import Navigation from './Navbar';
 import Home from './Home.js'
 import Create from './Create.js'
+import Generate from './Generate.js'
+import NFTList from './NFTList.js'
 import MyListedItems from './MyListedItems.js'
 import MyPurchases from './MyPurchases.js'
 import MarketplaceAbi from '../contractsData/Marketplace.json'
@@ -76,6 +78,12 @@ function App() {
               } />
               <Route path="/my-purchases" element={
                 <MyPurchases marketplace={marketplace} nft={nft} account={account} />
+              } />
+              <Route path="/nft-generator" element={
+                <Generate marketplace={marketplace} nft={nft} />
+              } />
+              <Route path="/nft-list" element={
+                <NFTList marketplace={marketplace} nft={nft} />
               } />
             </Routes>
           )}
