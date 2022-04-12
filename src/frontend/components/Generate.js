@@ -1,12 +1,16 @@
-import React, { useState} from 'react'
+import React, { useState, useEffect} from 'react'
 import { ethers } from "ethers"
-import { Row, Form, Button } from 'react-bootstrap'
+import { Form } from 'react-bootstrap'
 import { create as ipfsHttpClient } from 'ipfs-http-client'
+import { Row, Col, Card, Button, Nav } from 'react-bootstrap'
+import {  Link} from "react-router-dom";
 
-var items = []
+var itemImags = []
 
 const Generate = ({ marketplace, nft, }) => {
   const [count, setCount] = useState(null)
+  const [items, setItems] = useState([])
+  const [successed, setText] = useState("");
   
 
   const generateNFT = async () => {
@@ -21,9 +25,18 @@ const Generate = ({ marketplace, nft, }) => {
   }
 
   const loadNFTImages = async (data) => { 
+
     console.log(data.items);
-    items = data.items;
-    console.log(items.length)
+    itemImags = data.items;
+    console.log(itemImags.length)
+    
+    setItems(itemImags)
+    setText("NFT images generated!")
+  }
+
+  const listNFTImage = async (item) => {
+    //await (await marketplace.purchaseItem(item.itemId, { value: item.totalPrice })).wait()
+    //loadMarketplaceItems()
   }
 
   return (
@@ -41,6 +54,9 @@ const Generate = ({ marketplace, nft, }) => {
             </Row>
           </div>
         </main>
+        <h3>   </h3>
+        <h3>   </h3>
+        <h3>{successed}</h3>
       </div>
     </div>
   );
